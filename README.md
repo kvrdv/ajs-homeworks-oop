@@ -1,6 +1,6 @@
 ## Нетология
 ## 7.5. "Прототипы, конструкторы, классы и наследование"
-[Дамшнее задание](https://github.com/netology-code/ajs-homeworks/tree/ajs8/oop)
+[Домашнее задание](https://github.com/netology-code/ajs-homeworks/tree/ajs8/oop)
 ---
 # Домашнее задание к лекции «Классы, наследование»
 
