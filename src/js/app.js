@@ -3,62 +3,47 @@ import sum from './basic';
 console.log('worked'); // eslint-disable-line
 console.log(sum([1, 2])); // eslint-disable-line
 
-class Character {
-  constructor(hero) {
-    this.name = hero.name; // имя
-    this.type = hero.type; // тип
+export default class Character {
+  constructor(name, type) {
+    this.name = name; // имя
+    this.type = type; // тип
     this.health = 100; // уровень жизни
     this.level = 1; // уровень персонажа
-    this.attack = hero.attack; // атака
-    this.defence = hero.defence; // защита
+    this.attack = 0; // атака
+    this.defence = 0; // защита
 
-    // Проверки соответствия требованиям:
+    const types = ['Bowerman', 'Swordsman', 'Magician', 'Daemon', 'Undead', 'Zombie']; // варианты типов (классов персонажей)
 
-    if ((typeof this.name) !== 'string') {
+    // проверки соответствия требованиям:
+    if ((typeof this.name !== 'string') || (typeof this.name === undefined)) {
       throw new Error('Некорректный формат имени!');
-    }
-
-    if ((this.name.length < 2) || (this.name.length > 10)) {
-      throw new Error('Некорректная длина имени!');
-    }
-
-    if ((typeof this.type) !== 'string') {
+    } else if (this.name.length < 2) {
+      throw new Error('Имя должно состоять минимум из 2 букв!');
+    } else if (this.name.length > 10) {
+      throw new Error('Имя может состоять максимум из 10 букв!');
+    } else if ((typeof this.type) !== 'string') {
       throw new Error('Некорректный формат типа!');
+    } else if (types.includes(this.type) === false) {
+      throw new Error('Такого класса не существует! Доступные классы: Bowerman, Swordsman, Magician, Daemon, Undead, Zombie.');
     }
 
-    const types = ['Bowerman', 'Swordsman', 'Magician', 'Daemon', 'Undead', 'Zombie']; // варианты типов
-    if (types.includes(this.type) == false) {
-      throw new Error('Некорректный тип!');
-    }
-
-    // Предустановки атаки/защиты:
-
-    if (this.type == 'Bowerman') {
+    // предустановки атаки/защиты:
+    if (this.type === 'Bowerman') {
       this.attack = 55;
       this.defence = 25;
-    }
-
-    if (this.type == 'Swordsman') {
+    } else if (this.type === 'Swordsman') {
       this.attack = 40;
       this.defence = 10;
-    }
-
-    if (this.type == 'Magician') {
+    } else if (this.type === 'Magician') {
       this.attack = 10;
       this.defence = 40;
-    }
-
-    if (this.type == 'Daemon') {
+    } else if (this.type === 'Daemon') {
       this.attack = 10;
       this.defence = 40;
-    }
-
-    if (this.type == 'Undead') {
+    } else if (this.type === 'Undead') {
       this.attack = 25;
       this.defence = 25;
-    }
-
-    if (this.type == 'Zombie') {
+    } else if (this.type === 'Zombie') {
       this.attack = 40;
       this.defence = 10;
     }
@@ -82,64 +67,3 @@ class Character {
     }
   }
 }
-
-class Bowerman extends Character {
-  constructor() {
-    super({
-      name: 'Лучник',
-      type: 'Bowerman',
-    });
-  }
-}
-
-class Swordsman extends Character {
-  constructor() {
-    super({
-      name: 'Мечник',
-      type: 'Swordsman',
-    });
-  }
-}
-
-class Magician extends Character {
-  constructor() {
-    super({
-      name: 'Маг',
-      type: 'Magician',
-    });
-  }
-}
-
-class Daemon extends Character {
-  constructor() {
-    super({
-      name: 'Демон',
-      type: 'Daemon',
-    });
-  }
-}
-
-class Undead extends Character {
-  constructor() {
-    super({
-      name: 'Нежить',
-      type: 'Undead',
-    });
-  }
-}
-
-class Zombie extends Character {
-  constructor() {
-    super({
-      name: 'Зомби',
-      type: 'Zombie',
-    });
-  }
-}
-
-const bowerman = new Bowerman();
-const swordsman = new Swordsman();
-const magician = new Magician();
-const daemon = new Daemon();
-const undead = new Undead();
-const zombie = new Zombie();
