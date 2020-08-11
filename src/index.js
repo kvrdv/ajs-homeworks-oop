@@ -1,2 +1,2 @@
-import './css/style.css';
-import './js/app.js'; // eslint-disable-line
+import './css/style';
+import './js/character';
